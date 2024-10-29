@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  user_id             String   @id @default(uuid()) @db.Uuid
+  user_name           String
+  user_lastname       String
+  user_email          String
+  user_password       String
+  user_avatar         String
+  reviews             Review[] @relation("UserReviews")
+}
+
+model Place {
+  place_id            String   @id @default(uuid()) @db.Uuid
+  place_name          String   
+  place_latitude      Float    
+  place_longitude     Float    
+  place_rating        Int     
+  place_reviews       Int     
+  place_details       String
+  place_category      String
+  place_img           String
+  reviews             Review[] @relation("PlaceReviews")
+}
+
+model Review {
+  review_id     String   @id @default(uuid()) @db.Uuid
+  user_id       String   @db.Uuid
+  place_id      String   @db.Uuid
+  review_title   String   
+  review_rating  Int    
+  review_content String
+
+  user    User  @relation("UserReviews", fields: [user_id], references: [user_id])
+  place   Place @relation("PlaceReviews", fields: [place_id], references: [place_id])
+}
