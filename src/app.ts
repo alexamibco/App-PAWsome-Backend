@@ -9,9 +9,9 @@ import cors from "cors";
 const app = express();
 
 const corsOptions = {
-  origin: 'https://app-pawsome-frontend.vercel.app', 
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'], 
+  origin: "https://app-pawsome.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 app.use(cors(corsOptions));

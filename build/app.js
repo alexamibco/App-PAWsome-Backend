@@ -12,9 +12,9 @@ const routes_5 = __importDefault(require("./auth/routes"));
 const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 const corsOptions = {
-    origin: 'https://app-pawsome-frontend.vercel.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: "https://app-pawsome.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
 };
 app.use((0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
