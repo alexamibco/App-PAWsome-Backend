@@ -8,9 +8,13 @@ import cors from "cors";
 
 const app = express();
 
-app.use(cors({
-    origin: 'http://localhost:5173'
-  }));
+const corsOptions = {
+  origin: 'https://app-pawsome-frontend.vercel.app', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'], 
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
