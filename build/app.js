@@ -11,9 +11,12 @@ const routes_4 = __importDefault(require("./uploadImages/routes"));
 const routes_5 = __importDefault(require("./auth/routes"));
 const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
-app.use((0, cors_1.default)({
-    origin: 'http://localhost:5173'
-}));
+const corsOptions = {
+    origin: 'https://app-pawsome-frontend.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use((0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
 app.use(routes_1.default);
 app.use(routes_2.default);
